@@ -1,0 +1,19 @@
+# upload.html
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Upload an Image for Processing</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if uploaded_image %}
+        <h3>Original Image:</h3>
+        <img src="{{ uploaded_image.image.url }}" alt="Original Image" width="300">
+        <h3>Processed Image:</h3>
+        <img src="{{ uploaded_image.processed_image.url }}" alt="Processed Image" width="300">
+    {% endif %}
+</body>
+</html>
